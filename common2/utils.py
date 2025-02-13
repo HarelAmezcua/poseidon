@@ -62,7 +62,6 @@ def py_ang(A, B=(1, 0)):
         return 360 - inner
 
 
-
 def append_dot(extensions):
     res = []
 
