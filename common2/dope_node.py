@@ -135,11 +135,11 @@ class DopeNode(object):
                 draw.draw_cube(points2d, self.draw_color)
 
         # create directory to save image if it does not exist
-        img_name_base = img_name.split("/")[-1]
+        img_name_base = img_name.split("\\")[-1]
         output_path = os.path.join(
             output_folder,
-            weight.split("/")[-1].replace(".pth", ""),
-            *img_name.split("/")[:-1],
+            weight.split("\\")[-1].replace(".pth", ""),
+            *img_name.split("\\")[:-1],
         )
         if not os.path.isdir(output_path):
             os.makedirs(output_path, exist_ok=True)

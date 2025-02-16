@@ -11,6 +11,7 @@ def main():
     # Load configurations and prepare the output folder
     config, camera_info = load_config_files(opt.config, opt.camera)
     prepare_output_folder(opt.outf)
+    print(opt.outf)
 
     # Load images and weights
     try:
