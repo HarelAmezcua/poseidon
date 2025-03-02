@@ -3,19 +3,19 @@ import cv2
 import yaml
 import argparse
 from common2.utils import loadimages_inference, loadweights
+import glob
 
-def parse_arguments():
+def parse_arguments(base_dir: str = ""): 
     """Parse and return command-line arguments."""
     parser = argparse.ArgumentParser()
-    parser.add_argument("--outf", default=r"C:\github\my-pose-estimator\output",
+
+    parser.add_argument("--outf", default=os.path.join(base_dir, 'output'),
                         help="Where to store the output images and inference results.")
-    parser.add_argument("--data", default=r"C:\github\my-pose-estimator\other\test_frame_images",
-                        help="Folder for data images to load.")
-    parser.add_argument("--config", default=r"C:\github\my-pose-estimator\other\config\config_pose.yaml",
+    parser.add_argument("--config", default= os.path.join(base_dir,'other','config','config_pose.yaml'),
                         help="Path to inference config file.")
-    parser.add_argument("--camera", default=r"C:\github\my-pose-estimator\other\config\camera_info.yaml",
+    parser.add_argument("--camera", default=os.path.join(base_dir,'other','config','camera_info.yaml'),
                         help="Path to camera info file.")
-    parser.add_argument("--weights", "-w", default=r"C:\github\my-pose-estimator\other\weights",
+    parser.add_argument("--weights", "-w", default=os.path.join(base_dir,' other','weights'),
                         help="Path to weights or folder containing weights.")
     parser.add_argument("--parallel", action="store_true",
                         help="Specify if weights were trained using DDP.")
@@ -26,6 +26,7 @@ def parse_arguments():
                         help="Generates debugging information.")
 
     return parser.parse_args()
+
 
 
 def load_config_files(config_path, camera_path):
@@ -42,16 +43,12 @@ def prepare_output_folder(output_folder):
     os.makedirs(output_folder, exist_ok=True)
 
 
-def load_images_and_weights(data_path, exts, weights_path):
+def load_weight(weights_path):
     """Load inference images and model weights."""
-    imgs, imgsname = loadimages_inference(data_path, extensions=exts)
-    if not imgs or not imgsname:
-        raise FileNotFoundError("No input images found. Check --data and --exts flags.")
-
-    weights = loadweights(weights_path)
-    if not weights:
-        raise FileNotFoundError("No weights found. Check --weights flag.")
-    return imgs, imgsname, weights
+    files = glob.glob(os.path.join(weights_path, "*.pth"), recursive=True)
+    if not files:
+        raise FileNotFoundError(f"No .pth file found in: {weights_path}")
+    return files[0]
 
 
 def process_images(dope_node, imgs, imgsname, camera_info, output_folder, weight, debug):
