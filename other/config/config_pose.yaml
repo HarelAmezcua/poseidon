@@ -43,7 +43,6 @@ weights: {
     # "TomatoSauce":"package://dope/weights/TomatoSauce.pth",
     # "Tuna":"package://dope/weights/Tuna.pth",
     # "Yogurt":"package://dope/weights/Yogurt.pth",
-
 }
 
 # Cuboid dimension in cm x,y,z
@@ -122,7 +121,7 @@ class_ids: {
     "GranolaBars"       : 33, 
     "Peaches"           : 34,
     "GreenBeans"        : 35, 
-    "PeasAndCarrots"    : 36 
+    "PeasAndCarrots"    : 36,
 }
 
 draw_colors: {
@@ -133,6 +132,7 @@ draw_colors: {
     "soup": [255, 101, 0],  # orange
     "sugar": [232, 222, 12],  # yellow
     "bleach": [232, 222, 12],  # yellow
+    "Ketchup" : [255, 0, 0], # red
 }
 
 # optional: provide a transform that is applied to the pose returned by DOPE
