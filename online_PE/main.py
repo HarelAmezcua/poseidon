@@ -4,8 +4,8 @@ base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(base_dir)
 import cv2
 import numpy as np
-from src.dope_node import DopeNode
-import src.utils as ut
+from src.dope_node_v2 import DopeNode
+import src.auxiliar_v2 as ut
 
 def main():
     opt = ut.parse_arguments(base_dir)

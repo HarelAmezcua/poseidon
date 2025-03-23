@@ -19,9 +19,9 @@ from scipy.ndimage.filters import gaussian_filter
 from scipy import optimize
 
 # Custom
-from common2.cuboid_pnp_solver import *
+from src.cuboid_pnp_solver import *
 from collections import OrderedDict
-from common2.models import *
+from src.models import *
 
 sys.path.append("../")
 

@@ -2,7 +2,7 @@ import os
 import cv2
 import yaml
 import argparse
-from common2.utils import loadimages_inference, loadweights
+from src.utils import loadimages_inference, loadweights
 
 def parse_arguments():
     """Parse and return command-line arguments."""

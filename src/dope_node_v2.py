@@ -1,4 +1,7 @@
 # This file is a modified version of the original DOPE code from the following repository:
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import cv2
 import numpy as np
 from PIL import Image
@@ -108,7 +111,8 @@ class DopeNode(object):
             self.model.net, self.pnp_solver, img, self.config_detect,
             grid_belief_debug=True
         )
-        belief_imgs.show()
+        
+        #belief_imgs.show()
 
         # Publish pose and overlay cube on image
         for _, result in enumerate(results):
@@ -134,23 +138,7 @@ class DopeNode(object):
                     points2d.append(tuple(pair))
                 draw.draw_cube(points2d, self.draw_color)
 
-        # create directory to save image if it does not exist
-        img_name_base = img_name.split("\\")[-1]
-        output_path = os.path.join(
-            output_folder,
-            weight.split("\\")[-1].replace(".pth", ""),
-            *img_name.split("\\")[:-1],
-        )
-        if not os.path.isdir(output_path):
-            os.makedirs(output_path, exist_ok=True)
-
-        im.save(os.path.join(output_path, img_name_base))
-        if belief_imgs is not None:
-            belief_imgs.save(os.path.join(output_path, "belief_maps.png"))
-
-        json_path = os.path.join(
-            output_path, ".".join(img_name_base.split(".")[:-1]) + ".json"
-        )
-        # save the json files
-        with open(json_path, "w") as fp:
-            json.dump(dict_out, fp, indent=2)
+        # Save image
+        print("Returbn Image as cv2 image")
+        im = np.array(im)  
+        return im
