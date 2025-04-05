@@ -7,6 +7,7 @@ import numpy as np
 import cv2
 from pyrr import Quaternion, Matrix44, Vector3, euler
 
+
 # Related to the object's local coordinate system
 # @unique
 class CuboidVertexType(IntEnum):

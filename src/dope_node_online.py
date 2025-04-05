@@ -9,10 +9,10 @@ import os
 import json
 
 # Importing the necessary classes from the common2 package
-from common2.cuboid import Cuboid3d
-from common2.cuboid_pnp_solver import CuboidPNPSolver
-from common2.detector import ModelData, ObjectDetector
-from common2.utils import Draw
+from src.cuboid import Cuboid3d
+from src.cuboid_pnp_solver import CuboidPNPSolver
+from src.detector import ModelData, ObjectDetector
+from src.utils import Draw
 
 class DopeNode(object):
     """ROS node that listens to image topic, runs DOPE, and publishes DOPE results"""

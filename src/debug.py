@@ -25,6 +25,9 @@ def visualize_projected_points(path_img, path_json, path_output, img_name, root)
         path_output, img_path.replace(root, "").replace(img_name, "").lstrip("/")
     )
     os.makedirs(path_output, exist_ok=True)
+
+    # Sanitize img_name to remove leading slashes or invalid characters
+    img_name = img_name.lstrip("\\/")  # Remove leading slashes
     img.save(os.path.join(path_output, img_name))
 
 
@@ -37,8 +40,8 @@ if __name__ == "__main__":
         help="Where to store the debug output images.",
     )
     parser.add_argument(
-        "--data",
-        required=True,
+        "--data",        
+        default=r"C:\github\POSEIDON\other\test_frame_images",
         help="Folder containing groundtruth and images.",
     )
 

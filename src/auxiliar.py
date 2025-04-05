@@ -7,21 +7,21 @@ from src.utils import loadimages_inference, loadweights
 def parse_arguments():
     """Parse and return command-line arguments."""
     parser = argparse.ArgumentParser()
-    parser.add_argument("--outf", default=r"C:\github\my-pose-estimator\output",
+    parser.add_argument("--outf", default=r"C:\github\POSEIDON\output",
                         help="Where to store the output images and inference results.")
-    parser.add_argument("--data", default=r"C:\github\my-pose-estimator\other\test_frame_images",
+    parser.add_argument("--data", default=r"C:\github\POSEIDON\other\test_frame_images",
                         help="Folder for data images to load.")
-    parser.add_argument("--config", default=r"C:\github\my-pose-estimator\other\config\config_pose.yaml",
+    parser.add_argument("--config", default=r"C:\github\POSEIDON\other\config\config_pose.yaml",
                         help="Path to inference config file.")
-    parser.add_argument("--camera", default=r"C:\github\my-pose-estimator\other\config\camera_info.yaml",
+    parser.add_argument("--camera", default=r"C:\github\POSEIDON\other\config\camera_info.yaml",
                         help="Path to camera info file.")
-    parser.add_argument("--weights", "-w", default=r"C:\github\my-pose-estimator\other\weights",
+    parser.add_argument("--weights", "-w", default=r"C:\github\POSEIDON\other\weights",
                         help="Path to weights or folder containing weights.")
     parser.add_argument("--parallel", action="store_true",
                         help="Specify if weights were trained using DDP.")
     parser.add_argument("--exts", nargs="+", type=str, default=["png"],
                         help="Extensions for images to use (e.g., png jpg).")
-    parser.add_argument("--object", default="cracker", help="Name of class to run detections on.")
+    parser.add_argument("--object", default="Ketchup", help="Name of class to run detections on.")
     parser.add_argument("--debug", action="store_true",
                         help="Generates debugging information.")
 

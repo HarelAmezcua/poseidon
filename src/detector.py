@@ -674,7 +674,7 @@ class ObjectDetector(object):
 
             # Computing the weigthed average for localizing the peaks
             peaks = list(peaks)
-            win = 11
+            win = 9
             ran = win // 2
             peaks_avg = []
             point_sample_list = []

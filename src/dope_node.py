@@ -11,8 +11,7 @@ from src.cuboid_pnp_solver import CuboidPNPSolver
 from src.detector import ModelData, ObjectDetector
 from src.utils import Draw
 
-class DopeNode(object):
-    """ROS node that listens to image topic, runs DOPE, and publishes DOPE results"""
+class DopeNode(object):    
 
     def __init__(
         self,
@@ -108,7 +107,7 @@ class DopeNode(object):
             self.model.net, self.pnp_solver, img, self.config_detect,
             grid_belief_debug=True
         )
-        belief_imgs.show()
+        #belief_imgs.show()
 
         # Publish pose and overlay cube on image
         for _, result in enumerate(results):

@@ -1,7 +1,3 @@
-"""
-NVIDIA from jtremblay@gmail.com
-"""
-
 # Networks
 import torch
 import torch

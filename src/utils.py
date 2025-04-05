@@ -1,6 +1,3 @@
-"""
-NVIDIA from jtremblay@gmail.com
-"""
 import albumentations as A
 import colorsys
 import glob
