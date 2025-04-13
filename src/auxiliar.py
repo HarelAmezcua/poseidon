@@ -9,7 +9,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--outf", default=r"C:\github\POSEIDON\output",
                         help="Where to store the output images and inference results.")
-    parser.add_argument("--data", default=r"C:\github\POSEIDON\other\test_frame_images",
+    parser.add_argument("--data", default=r"C:\github\poseidon\dataset\test_frame_images",
                         help="Folder for data images to load.")
     parser.add_argument("--config", default=r"C:\github\POSEIDON\other\config\config_pose.yaml",
                         help="Path to inference config file.")

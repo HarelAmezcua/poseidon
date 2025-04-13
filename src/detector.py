@@ -1,6 +1,3 @@
-# Description: This file contains the implementation of the DOPE network and the object detector class.
-
-# ================================ Imports ================================
 # Python
 import time
 import sys
@@ -31,7 +28,7 @@ transform = transforms.Compose(
         # transforms.Scale(IMAGE_SIZE),
         # transforms.CenterCrop((imagesize,imagesize)),
         transforms.ToTensor(),
-        transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
+        transforms.Normalize((0.45, 0.45, 0.45), (0.25, 0.25, 0.25)),
     ]
 )
 
@@ -562,6 +559,11 @@ class ObjectDetector(object):
                 continue
 
             cuboid2d = np.copy(points)
+
+            # Reorder points based on the specified order
+            print (points)
+            order = [0, 4, 5, 1, 3, 7, 6, 2,8]
+            points = [cuboid2d[i] for i in order]
             location, quaternion, projected_points = pnp_solver.solve_pnp(points)
 
             # run multiple sample
@@ -623,10 +625,6 @@ class ObjectDetector(object):
                         "raw_points": points,
                     }
                 )
-
-            # print("find_object_poses:  points = ", type(points), points)
-            # print("find_object_poses:  locn = ", location, "quat =", quaternion)
-            # print("find_object_poses:  projected_points = ", type(projected_points), projected_points)
 
         return detected_objects
 

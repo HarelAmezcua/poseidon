@@ -106,8 +106,7 @@ class DopeNode(object):
         results, belief_imgs = ObjectDetector.detect_object_in_image(
             self.model.net, self.pnp_solver, img, self.config_detect,
             grid_belief_debug=True
-        )
-        #belief_imgs.show()
+        )        
 
         # Publish pose and overlay cube on image
         for _, result in enumerate(results):

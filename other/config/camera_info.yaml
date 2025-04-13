@@ -4,7 +4,7 @@ camera_name: dope_webcam_0
 camera_matrix:
   rows: 3
   cols: 3
-  data: [579.411376953125, 0, 320.0, 0, 579.411376953125, 240.0, 0, 0, 1]
+  data: [808.6998901367188, 0, 322.814181940711, 0, 809.5892333984375, 245.745667049578, 0, 0, 1] # modify [579.411376953125, 0, 320.0, 0, 579.411376953125, 240.0, 0, 0, 1]
 distortion_model: plumb_bob
 distortion_coefficients:
   rows: 1
