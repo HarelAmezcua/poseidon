@@ -94,6 +94,9 @@ class DopeNode(object):
         self.pnp_solver.set_camera_intrinsic_matrix(camera_matrix)
         self.pnp_solver.set_dist_coeffs(dist_coeffs)
 
+        print("Camera matrix:")
+        print(self.pnp_solver._camera_intrinsic_matrix)
+
         # Copy and draw image
         img_copy = img.copy()
         im = Image.fromarray(img_copy)
@@ -137,8 +140,8 @@ class DopeNode(object):
         output_path = os.path.join(
             output_folder,
             weight.split("\\")[-1].replace(".pth", ""),
-            *img_name.split("\\")[:-1],
         )
+        print("output_path: ", *img_name.split("\\")[:-1])
         if not os.path.isdir(output_path):
             os.makedirs(output_path, exist_ok=True)
 
@@ -152,3 +155,6 @@ class DopeNode(object):
         # save the json files
         with open(json_path, "w") as fp:
             json.dump(dict_out, fp, indent=2)
+
+        print(result)
+        return result['rvec'], result['tvec']

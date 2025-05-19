@@ -113,11 +113,15 @@ class DopeNode(object):
         )
         
         #belief_imgs.show()
-
+        
+        rvec, tvec = [], []
         # Publish pose and overlay cube on image
         for _, result in enumerate(results):
             if result["location"] is None:
                 continue
+
+            rvec = result["rvec"]
+            tvec = result["tvec"]
 
             loc = result["location"]
             ori = result["quaternion"]
@@ -139,6 +143,7 @@ class DopeNode(object):
                 draw.draw_cube(points2d, self.draw_color)
 
         # Save image
-        print("Returbn Image as cv2 image")
+        #print("Returbn Image as cv2 image")
         im = np.array(im)  
-        return im
+        
+        return im, (rvec, tvec)

@@ -116,7 +116,7 @@ class CuboidPNPSolver(object):
                     )
                     quaternion = rotate_quaternion.cross(quaternion)
 
-        return location, quaternion, projected_points
+        return location, quaternion, projected_points, (rvec,tvec)
 
     def convert_rvec_to_quaternion(self, rvec):
         """Convert rvec (which is log quaternion) to quaternion"""

@@ -41,7 +41,6 @@ def prepare_output_folder(output_folder):
     """Create the output folder if it doesn't exist."""
     os.makedirs(output_folder, exist_ok=True)
 
-
 def load_images_and_weights(data_path, exts, weights_path):
     """Load inference images and model weights."""
     imgs, imgsname = loadimages_inference(data_path, extensions=exts)
@@ -67,3 +66,4 @@ def process_images(dope_node, imgs, imgsname, camera_info, output_folder, weight
             weight=weight,
             debug=debug
         )
+

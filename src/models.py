@@ -2,10 +2,7 @@
 import torch
 import torch
 import torch.nn as nn
-import torch.nn.parallel
-import torch.utils.data
 import torchvision.models as models
-
 
 class DopeNetwork(nn.Module):
     def __init__(

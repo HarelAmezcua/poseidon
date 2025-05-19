@@ -4,6 +4,7 @@ import yaml
 import argparse
 import glob
 from pygrabber.dshow_graph import FilterGraph
+import numpy as np
 
 def parse_arguments(base_dir: str = ""): 
     """Parse and return command-line arguments."""
@@ -21,7 +22,7 @@ def parse_arguments(base_dir: str = ""):
                         help="Specify if weights were trained using DDP.")
     parser.add_argument("--exts", nargs="+", type=str, default=["png"],
                         help="Extensions for images to use (e.g., png jpg).")
-    parser.add_argument("--object", default="cracker", help="Name of class to run detections on.")
+    parser.add_argument("--object", default="Ketchup", help="Name of class to run detections on.")
     parser.add_argument("--debug", action="store_true",
                         help="Generates debugging information.")
     return parser.parse_args()
@@ -51,7 +52,7 @@ def load_weight(weights_path):
 def process_images(dope_node, img, camera_info, output_folder, weight, debug):
     """Run inference on a set of images."""        
     frame = img[..., ::-1].copy()  # Convert BGR to RGB
-    img = dope_node.image_callback(
+    img, (rvec,tvec) = dope_node.image_callback(
         img=frame,
         camera_info=camera_info,
         img_name="frame",
@@ -59,9 +60,13 @@ def process_images(dope_node, img, camera_info, output_folder, weight, debug):
         weight=weight,
         debug=debug
     )
+
+    #print("rvec:", rvec)
+    #print("tvec:", tvec)
+
     # Convert from rgb to bgr
     img = img[..., ::-1].copy()
-    return img
+    return img, (rvec,tvec)
 
 def get_camera():
     """Find and return the '5Mega Webcam' camera device."""

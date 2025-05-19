@@ -23,7 +23,7 @@ def main():
     # Run inference for each weight
     for w_i, weight in enumerate(weights):
         print(f"Using weight {w_i + 1} of {len(weights)}: {weight}")
-        dope_node = DopeNode(config, weight, options.parallel, options.object)
+        dope_node = DopeNode(config, weight, options.parallel, options.object)        
         process_images(dope_node, imgs, imgsname, camera_info, options.outf, weight, options.debug)
         print("------")
 
